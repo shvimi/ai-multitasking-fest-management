@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<a href="{{ url_for('add_event') }}" class="btn btn-success mb-3">➕ Add Event</a>
+
+<h4>All Events</h4>
+
+<table class="table table-bordered">
+<tr>
+  <th>Name</th>
+  <th>Room</th>
+  <th>Date</th>
+  <th>AI Crowd</th>
+  <th>Risk</th>
+  <th>Action</th>
+</tr>
+
+{% for a in ai_data %}
+<tr>
+  <td>{{ a.event[1] }}</td>
+  <td>{{ a.event[3] }}</td>
+  <td>{{ a.event[5] }}</td>
+  <td>{{ a.crowd }}</td>
+  <td>{{ a.risk }}</td>
+  <td>
+    <form method="post" action="/delete_event">
+      <input type="hidden" name="event_id" value="{{ a.event[0] }}">
+      <button class="btn btn-danger btn-sm">Delete</button>
+    </form>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

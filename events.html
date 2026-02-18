@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if recommended %}
+<h4 class="text-success"> Recommended For You</h4>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Room</th>
+    <th>Date</th>
+  </tr>
+
+  {% for r in recommended %}
+  <tr>
+    <td>{{ r[1] }}</td>
+    <td>{{ r[2] }}</td>
+    <td>{{ r[3] }}</td>
+    <td>{{ r[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr>
+{% endif %}
+
+<h3>All Events</h3>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Room</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Action</th>
+  </tr>
+
+  {% for e in events %}
+  <tr>
+    <td>{{ e[1] }}</td>
+    <td>{{ e[2] }}</td>
+    <td>{{ e[3] }}</td>
+    <td>{{ e[5] }}</td>
+    <td>{{ e[6] }} - {{ e[7] }}</td>
+    <td>
+      <form method="post" action="/join_event">
+        <input type="hidden" name="event_id" value="{{ e[0] }}">
+        <button class="btn btn-sm btn-primary">Join</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

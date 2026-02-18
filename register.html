@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Create Account</h3>
+
+<form method="post">
+  <input name="name" class="form-control mb-2" placeholder="Name" required>
+  <input name="email" class="form-control mb-2" placeholder="Email" required>
+  <input name="password" class="form-control mb-2" placeholder="Password" required>
+
+  <select name="role" class="form-control mb-2">
+    <option>Student</option>
+    <option>Volunteer</option>
+    <option>Admin</option>
+  </select>
+
+  <button class="btn btn-success w-100">Register</button>
+</form>
+
+{% endblock %}
